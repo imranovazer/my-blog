@@ -1,0 +1,52 @@
+$background: #06283D;
+$button: #5a3ac9;
+$font: #443084;
+@import "Authorization.scss";
+@font-face {
+    font-family: Poppins;
+    src: url('../fonts/Poppins-Medium.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Poppins; 
+    transition: 0.2s;
+}       
+
+
+.wrapper {
+    
+        padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+        @media (min-width: 768px) {
+            .wrapper {
+                width: 750px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .wrapper {
+                width: 970px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .wrapper {
+                width: 1170px;
+            }
+        }
+
+.App {
+    background-color: $background;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+        flex-direction: column;
+}
+

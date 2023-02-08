@@ -1,0 +1,93 @@
+$dark: #06283d;
+$light: #dff6ff;
+.Navbar {
+  width: 100%;
+  height: 60px;
+  background-color: $light;
+  color: $dark;
+  display: flex;
+  align-items: center;
+  padding: 0 40px 0 40px;
+  justify-content: space-around;
+  .Logo {
+    font-size: 25px;
+    font-weight: 900;
+  }
+  .SearchBar {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    justify-content: space-between;
+    width: 400px;
+    border-radius: 21px;
+    overflow: hidden;
+    height: 40px;
+    input {
+      padding: 10px;
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+    .bx {
+      font-size: 21px;
+    }
+  }
+  .Options {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    .settings {
+      background-color: $dark;
+      color: white;
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: absolute;
+      //   background-color: black;
+      width: 150px;
+      height: 130px;
+      right: 0;
+      bottom: -130px;
+      display: none;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 21px;
+      .dropDownBox {
+        background-color: $light;
+        border-radius: 15px;
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      &:hover {
+        display: flex;
+      }
+      span {
+        padding: 10px;
+      }
+      button {
+        width: 90px;
+        border: none;
+        background-color: $dark;
+        color: white;
+        padding: 9px;
+        border-radius: 9px;
+        cursor: pointer;
+      }
+    }
+    .ava:hover ~ .dropdown {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.AuthorizationContainer {
+    width: 100vw;
+    height: 100vh;
+    
+}
+.forAuthorization {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+   
+    
+}
+.AuthorzizationBox {
+    width: 900px;
+    height: 600px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+    background-color: #256D85;
+    
+}
+.rabitImage {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        scale: 1.5;
+    }
+}
+.Log {
+    height: 100%;
+    width: 40%;
+    background-color: #DFF6FF;
+    overflow: hidden;
+    
+}
+.Log.zero {
+    width: 0;
+}
+.Sig.zero {
+    width: 0;
+}
+.Sig {
+    height: 100%;
+    width: 40%;
+    background-color: #DFF6FF;
+    overflow: hidden;
+}
