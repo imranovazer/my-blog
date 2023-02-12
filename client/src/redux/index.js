@@ -18,8 +18,9 @@ export const authSlice = createSlice({
       localStorage.setItem("email", action.payload.email);
       localStorage.setItem("username", action.payload.name);
       state.isAuth = true;
-      state.username = action.payload.username;
-      state.email = action.payload.email;
+      state.username =
+        localStorage.getItem("username"); /*action.payload.username;*/
+      state.email = localStorage.getItem("email"); /*action.payload.email;*/
     },
     LogOut: (state) => {
       localStorage.clear();

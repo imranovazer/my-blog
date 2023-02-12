@@ -7,11 +7,15 @@ import Settings from "./pages/Settings";
 import ProtectedRoute from "./components/protectedRoute";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
+import SideNav from "./components/SIdeNav";
 
 const NavLayout = () => (
   <>
     <Navbar />
-    <Outlet />
+    <div className="Horizont">
+      <SideNav />
+      <Outlet />
+    </div>
   </>
 );
 
