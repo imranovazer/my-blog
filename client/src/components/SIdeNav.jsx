@@ -1,12 +1,15 @@
 import "../styles/SideNav.scss";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { togglePostBox } from "../redux/postBoxReducer";
 const SideNav = () => {
+  const dispatch = useDispatch()
   return (
     <div className="SideNav">
       <div className="ProfilePhoto"></div>
       <Link to=""> My posts </Link>
       <Link to=""> My friends </Link>
-      <button className="Create">Create post </button>
+      <button className="Create" onClick={()=>dispatch(togglePostBox())}>Create post </button>
     </div>
   );
 };

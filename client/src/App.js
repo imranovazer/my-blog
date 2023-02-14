@@ -8,6 +8,9 @@ import ProtectedRoute from "./components/protectedRoute";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import SideNav from "./components/SIdeNav";
+import { useSelector  } from "react-redux";
+
+import CreatePost from "./components/CreatePost";
 
 const NavLayout = () => (
   <>
@@ -20,8 +23,13 @@ const NavLayout = () => (
 );
 
 const App = () => {
+  
+  const isActive = useSelector((state)=>state.postBox.isActive)
+  
+  
   return (
     <div className="App">
+      {isActive && <CreatePost/> }
       <Routes>
         <Route path="/Aut/*" element={<Authorization />} />
         <Route element={<ProtectedRoute />}>
