@@ -2,5 +2,7 @@
   width: 100%;
 }
 .forHomePage {
-  height: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: scroll;
 }
