@@ -3,10 +3,10 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
-const userController = require("./controllesrs/userControlles");
 dotenv.config({ path: "./.env" });
 
 const app = express();
+app.use("/public", express.static("public"));
 app.use(express.json());
 app.use(cors());
 mongoose.set("strictQuery", true);

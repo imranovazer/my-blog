@@ -2,6 +2,45 @@ const User = require("../models/users");
 const Post = require("../models/posts");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const sharp = require("sharp");
+const multer = require("multer");
+
+// const multerStorage = multer.diskStorage({
+//   destination : (req,file,cb)=>
+//   {
+//     cb(null ,'public/img/posts') ;
+//   },
+//   filename : (req,file,cb)=>
+//   {
+//     //post-54n5jnjn545nj-54545454545.jpeg file ==req.file
+//     const ext = file.mimetype.split('/')[1] ;
+//     cb(null,`user-${req.user.id}-${Date.now()}.${ext}`) ;
+//   }
+// })
+const multerStorage = multer.memoryStorage();
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Not an image, please upload image"), false);
+  }
+};
+const uplaod = multer({ storage: multerStorage, fileFilter: multerFilter });
+
+exports.resizePhoto = (req, res, next) => {
+  if (!req.file) {
+    return next();
+  }
+  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+  sharp(req.file.buffer)
+    .resize(500, 300)
+    .toFormat("jpeg")
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/posts/${req.file.filename}`);
+  next();
+};
+
+exports.uploadPostPhoto = uplaod.single("photo");
 exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email }).select(
@@ -80,13 +119,18 @@ exports.protect = async (req, res, next) => {
 };
 exports.post = async (req, res) => {
   try {
-    const newPost = await Post.create({
+    const arguments = {
       userId: req.user._id,
       userName: req.user.name,
       title: req.body.title,
       createdAt: Date.now(),
       heading: req.body.header,
-    });
+    };
+    if (req.file) {
+      arguments.image = req.file.filename;
+    }
+
+    const newPost = await Post.create(arguments);
     res.status(201).json({
       status: "succes",
       data: {
