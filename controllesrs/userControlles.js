@@ -145,6 +145,23 @@ exports.post = async (req, res) => {
     });
   }
 };
+
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).populate("posts");
+
+    console.log(user);
+    res.status(201).json({
+      status: "succes",
+      data: user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find();
