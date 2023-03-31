@@ -10,7 +10,7 @@ const userPostCards = (props) => {
           <span className="Header">{props.heading}</span>
           {props.image && (
             <img
-              src={`http://127.0.0.1:8000/public/img/posts/${props.image}`}
+              src={`${process.env.REACT_APP_URL}/public/img/posts/${props.image}`}
               alt=""
             />
           )}
