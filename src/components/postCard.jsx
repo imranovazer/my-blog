@@ -1,6 +1,7 @@
 import "../styles/postCard.scss";
 import React from "react";
 import { axiosPrivate, Axios } from "../axios";
+import { Link } from "react-router-dom";
 const PostCard = (props) => {
   return (
     <div className="PostCard">
@@ -16,7 +17,9 @@ const PostCard = (props) => {
       </div>
       <div className="lover">
         <span className="Date">Date : {props.createdAt.split("T")[0]}</span>
-        <span className="User">User : {props.user}</span>
+        <Link to={`/user/${props.userId}`} className="User">
+          User : {props.user}
+        </Link>
       </div>
     </div>
   );

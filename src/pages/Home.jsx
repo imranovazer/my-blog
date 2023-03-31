@@ -26,6 +26,7 @@ const Home = () => {
             title={e.title}
             user={e.userName}
             image={e.image}
+            userId={e.userId}
           />
         ))}
       </div>
