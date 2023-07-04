@@ -51,9 +51,10 @@ exports.login = async (req, res) => {
     console.log(passMatch);
 
     if (passMatch) {
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: `${process.env.JWT_EXPIRES}d`,
-      });
+      // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      //   expiresIn: `${process.env.JWT_EXPIRES}d`,
+      // });
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
       res.status(200).json({
         status: "Success",
         data: {
@@ -106,7 +107,7 @@ exports.protect = async (req, res, next) => {
     }
 
     const verify = await jwt.verify(token, process.env.JWT_SECRET);
-
+    console.log(verify);
     const user = await User.findById(verify.id);
     if (!user) {
       next(new Error("You are not authorized!"));
